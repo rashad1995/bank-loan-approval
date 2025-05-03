@@ -9,8 +9,9 @@
 1. **نسخ المشروع من GitHub:**
 
 ```bash
-git clone https://github.com/your_username/your_repo_name.git
-cd your_repo_name
+gitclone
+https://github.com/rashad1995/bank-loan-approval.git
+cd bank-loan-approval
 ```
 3. **تثبيت المكتبات المطلوبة:**
 ```bash
