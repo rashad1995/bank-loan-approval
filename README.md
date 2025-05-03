@@ -1,63 +1,102 @@
-# Loan Approval Web Application using Machine Learning
+# تطبيق ويب للموافقة على القروض باستخدام تعلم الآلة
 
-This project is a web-based application that helps banks automate the decision-making process for loan approvals or rejections. It uses a machine learning model trained on real data to predict whether an individual loan request should be approved. The goal is to provide a complete pipeline including data analysis, model training, performance evaluation, and an interactive user interface.
+هذا المشروع عبارة عن تطبيق ويب يساعد البنوك في اتخاذ قرارات تلقائية حول الموافقة أو رفض طلبات القروض. يعتمد على نموذج تعلم آلة مدرب على بيانات حقيقية بهدف بناء نظام متكامل يشمل تحليل البيانات، تدريب النموذج، تقييم الأداء، وواجهة استخدام تفاعلية.
 
-## Project Features
+---
 
-- Add/Delete individual loan requests
-- Display predictions (approve/reject)
-- Exploratory Data Analysis (EDA) of all requests
-- Machine learning model with performance metrics (Accuracy, Precision, Recall, F1-score)
-- A dedicated page for date-related issues and how they are handled
-- Git branches for teamwork and version control
-- Deployed website (link to be added in the report)
+## ميزات المشروع
 
-## How to Run the Project Locally
+- إضافة أو حذف طلبات القروض
+- عرض نتيجة التنبؤ (موافقة / رفض)
+- تحليل استكشافي للبيانات (EDA)
+- صفحة مخصصة لعرض دقة النموذج (الدقة، الاسترجاع، F1)
+- معالجة مشكلة التواريخ وشرحها
+- استخدام أفرع Git لتوزيع المهام والتعاون
+- رابط الموقع النهائي (يُضاف لاحقًا في التقرير)
 
-1. **Clone the repository:**
+---
+
+## أعضاء الفريق
+
+- رشاد خرما – `rashad_306889`  
+- علي عباس – `ali_241692`  
+- ريم أحمد – `reem_278333`
+
+---
+
+## موعد التسليم
+
+**20 يونيو**
+
+---
+
+## كيفية تشغيل المشروع على جهازك (Locally)
+
+1. **نسخ المشروع من GitHub:**
 
 ```bash
 git clone https://github.com/your_username/your_repo_name.git
 cd your_repo_name
 ```
 
-2. **(Optional) Create and activate a virtual environment:**
+2. **(اختياري) إنشاء بيئة افتراضية وتفعيلها:**
 
 ```bash
 python -m venv env
-source env/bin/activate      # On Linux/macOS
-env\Scripts\activate         # On Windows
+source env/bin/activate      # على Linux أو macOS
+env\Scripts\activate         # على Windows
 ```
 
-3. **Install required libraries:**
+3. **تثبيت المكتبات المطلوبة:**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Run the application:**
+---
 
-- For **Streamlit**:
+## تشغيل التطبيق: باستخدام Streamlit أو Flask
+
+يمكن تطوير وتشغيل المشروع باستخدام **Streamlit** أو **Flask** حسب الطريقة المفضلة:
+
+### الخيار الأول: Streamlit (مُفضل لتطبيقات تعلم الآلة)
+
+Streamlit هو مكتبة بسيطة وسريعة لبناء تطبيقات تفاعلية باستخدام بايثون، ومثالية لمشاريع تحليل البيانات والنماذج.
+
+**لتشغيل التطبيق:**
+
 ```bash
 streamlit run app.py
 ```
-- For **Flask**:
+
+- سيفتح التطبيق تلقائيًا في المتصفح على: `http://localhost:8501`
+
+### الخيار الثاني: Flask (مخصص أكثر)
+
+Flask هو إطار عمل خفيف يسمح ببناء واجهات ويب مخصصة بشكل كامل. مناسب إذا كنت تريد تحكمًا أكبر في تصميم الواجهة.
+
+**لتشغيل التطبيق:**
+
 ```bash
 python app.py
 ```
 
-5. **Open the app in your browser:**
-
-- For **Streamlit**: `http://localhost:8501`  
-- For **Flask**: `http://127.0.0.1:5000`
+- سيفتح التطبيق على: `http://127.0.0.1:5000`
 
 ---
 
-## Python Requirements
+| الإطار      | الأفضل لـ                         | السهولة      | التخصيص        |
+|-------------|----------------------------------|--------------|----------------|
+| Streamlit   | النماذج وتحليل البيانات السريع     | عالية         | محدود           |
+| Flask       | تطبيقات الويب الكاملة              | متوسطة        | عالي            |
 
-To ensure the project runs properly, you need to install the required libraries listed in the `requirements.txt` file.
+---
 
-### Contents of `requirements.txt`:
+## المكتبات المطلوبة (requirements.txt)
+
+تأكد من تثبيت المكتبات الموجودة في ملف `requirements.txt`.
+
+### محتويات مقترحة لملف `requirements.txt`:
 
 ```
 pandas
@@ -70,23 +109,19 @@ streamlit
 joblib
 ```
 
-### Quick Explanation of Libraries:
+### وصف المكتبات:
 
-| Library         | Purpose                                      |
-|-----------------|----------------------------------------------|
-| `pandas`        | Data manipulation and analysis               |
-| `numpy`         | Numerical operations and array handling      |
-| `scikit-learn`  | Building and evaluating machine learning models |
-| `matplotlib`    | Basic plotting and visualizations            |
-| `seaborn`       | Advanced data visualization and plotting     |
-| `plotly`        | Interactive plotting (optional)              |
-| `streamlit`     | Build interactive web apps quickly           |
-| `joblib`        | Saving and loading trained models            |
+| المكتبة         | الاستخدام                                       |
+|------------------|------------------------------------------------|
+| `pandas`         | معالجة وتحليل البيانات                         |
+| `numpy`          | العمليات الرياضية والتعامل مع المصفوفات        |
+| `scikit-learn`   | بناء وتقييم نماذج تعلم الآلة                   |
+| `matplotlib`     | الرسوم البيانية الأساسية                        |
+| `seaborn`        | رسوم بيانية متقدمة                             |
+| `plotly`         | رسوم تفاعلية (اختياري)                         |
+| `streamlit`      | بناء واجهة المستخدم                             |
+| `joblib`         | حفظ واسترجاع النموذج المدرب                     |
 
 ---
-## Team Members
 
-- Rashad Khurma – `rashad_306889`  
-- Ali Abbas – `ali_241692`  
-- Reem Ahmad – `reem_278333`
-
+**بالتوفيق في مشروعكم!**
