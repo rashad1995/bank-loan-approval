@@ -7,8 +7,13 @@ import seaborn as sns
 
 if __name__ == "__main__":
      parent_path = pathlib.Path(__file__).parent.absolute()
+
      local_path='/HW_F24_MLT/loan_prediction/loan_prediction.csv'
      df = pd.read_csv(os.path.join(parent_path,'HW_F24_MLT/loan_prediction/loan_prediction.csv'))
+
+     local_path='data/loan_prediction.csv'
+     df = pd.read_csv(os.path.join(parent_path,local_path))
+
 
 
 
@@ -283,21 +288,35 @@ def proccess_data(df):
 
 ###########################################################################################################################
 
+
 def plot_analysis(df):      
      df= proccess_data(df)
      os.makedirs(os.path.join(pathlib.Path(__file__).parent.absolute(),'analysis'), exist_ok=True)
+
+def plot_analysis(df, dir_path=""):      
+     df= proccess_data(df)
+     os.makedirs(os.path.join(pathlib.Path(__file__).parent.absolute(),dir_path,'analysis_plots'), exist_ok=True)
+
      ##الترابط
      dfcorrelations = df.corr(method='pearson')
      plt.figure(figsize=(8, 6)) 
      sns.heatmap(dfcorrelations, annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5)
      plt.title('Correlation Matrix')
+
      plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),'analysis' ,"correlation matrix.png"))
+
+     plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),dir_path,'analysis_plots' ,"correlation matrix.png"))
+
      plt.close()
      ####  عرض توزع قيم الأعمدة   
      for label in df.columns:
           plt.figure(figsize=(8, 6)) 
           sns.boxplot(df[label])
+
           plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),'analysis' ,f"{label+'distribution'}.png"))
+
+          plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),dir_path,'analysis_plots' ,f"{label+'distribution'}.png"))
+
           plt.close()
 
 
@@ -318,7 +337,11 @@ def plot_analysis(df):
           plt.ylabel('Probability')
           plt.xlabel(label)
           plt.legend()
+
           plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),'analysis' ,f"{label}.png"))
+
+          plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),dir_path,'analysis_plots' ,f"{label}.png"))
+
           plt.close()
 
 
@@ -328,7 +351,11 @@ def plot_analysis(df):
                x_label = df.columns[i]
                y_label = df.columns[j]
                sns.scatterplot(x=x_label, y=y_label, data=df, hue='Loan_Status')
+
                plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),'analysis' ,f"{df.columns[i]+' vs '+df.columns[j]}.png"))
+
+               plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),dir_path,'analysis_plots' ,f"{df.columns[i]+' vs '+df.columns[j]}.png"))
+
                plt.close()
      
      # رسم توزع الأصناف
@@ -336,16 +363,27 @@ def plot_analysis(df):
      labels = count_values.index.to_list() 
      plt.title('Original classes distribution')
      plt.pie(x = count_values, labels = labels, autopct ='%1.1f%%' )
+
      plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),'analysis' ,f"Original classes distribution.png"))
+
+     plt.savefig(os.path.join(pathlib.Path(__file__).parent.absolute(),dir_path,'analysis_plots' ,f"Original classes distribution.png"))
+
      plt.close()
                     
 ###########################################################################################################################
+
 
 
 def generate_data_profile(df):
       from ydata_profiling import ProfileReport      
       profile = ProfileReport(df, title='loan_prediction', explorative= True)
       profile.to_file(os.path.join(pathlib.Path(__file__).parent.absolute(),'loan_prediction.html'))   #if it don't work run -> pip install setuptools
+
+def generate_data_profile(df, dir_path=""):
+      from ydata_profiling import ProfileReport      
+      profile = ProfileReport(df, title='loan_prediction', explorative= True)
+      profile.to_file(os.path.join(pathlib.Path(__file__).parent.absolute(),dir_path,'loan_prediction.html'))   #if it don't work run -> pip install setuptools
+
 
 
 ###########################################################################################################################
